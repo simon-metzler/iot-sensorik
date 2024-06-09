@@ -21,7 +21,7 @@ const config: Config = {
     themes: false,
     darkTheme: "dark", 
     base: true,
-    styled: false,
+    styled: true,
     utils: true,
     prefix: "",
     logs: true,
