@@ -37,7 +37,8 @@ Ein Schulprojekt mit Next.js zur Anzeige von Sensordaten.
 
 - Next.js
 - React
-- CSS Modules
+- Tailwind CSS
+- DaisyUI
 
 ## Kontakt
 
