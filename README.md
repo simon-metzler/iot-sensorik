@@ -6,11 +6,11 @@ Ein Schulprojekt mit Next.js zur Anzeige von Sensordaten.
 
 1. Repository klonen:
    ```bash
-   git clone https://github.com/dein-benutzername/sensorik-datenanzeige.git
+   git clone https://github.com/simon-metzler/iot-sensorik.git
    ```
 2. In das Projektverzeichnis wechseln:
    ```bash
-   cd sensorik-datenanzeige
+   cd iot-sensorik
    ```
 3. Abhängigkeiten installieren:
    ```bash
