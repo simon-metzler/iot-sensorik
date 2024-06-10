@@ -20,7 +20,7 @@ const config: Config = {
   daisyui: {
     themes: false,
     darkTheme: "dark", 
-    base: true,
+    base: false,
     styled: true,
     utils: true,
     prefix: "",

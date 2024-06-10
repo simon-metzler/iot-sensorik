@@ -20,10 +20,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           className="drawer-overlay"
         ></label>
         <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-          <h2 className="text-xl font-bold mb-4">Dashboard</h2>
+          <h2 className="text-3xl font-bold mb-4">Dashboard</h2>
           <ul className="space-y-4">
             <li>
-              <Link href="/dashboard/overview" className="text-lg">
+              <Link href="/dashboard" className="text-lg">
                 Overview
               </Link>
             </li>
@@ -33,7 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </Link>
             </li>
             <li>
-              <Link href="dashboard/sunpower" className="text-lg">
+              <Link href="/dashboard/sunpower" className="text-lg">
                 Sun Power
               </Link>
             </li>
