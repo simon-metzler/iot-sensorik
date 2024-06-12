@@ -1,32 +1,29 @@
 "use client";
+
 import {
   LineChart,
   Line,
-  CartesianGrid,
   XAxis,
   YAxis,
+  CartesianGrid,
   Tooltip,
+  Legend,
 } from "recharts";
-const data = [
-  { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-  { name: "Page B", uv: 4090, pv: 240, amt: 2400 },
-  { name: "Page C", uv: 40, pv: 24, amt: 2400 },
-];
+import { fetchData } from "@/app/lib/data";
 
 export default function Page() {
+  const data = fetchData();
+
   return (
     <div>
-      <LineChart
-        width={600}
-        height={300}
-        data={data}
-        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-      >
-        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="name" />
+      <h1>Temperature Dashboard</h1>
+      <LineChart width={800} height={400} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="temperature" stroke="#8884d8" />
       </LineChart>
     </div>
   );
