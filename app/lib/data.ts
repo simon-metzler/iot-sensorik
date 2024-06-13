@@ -1,25 +1,29 @@
-import mongoose from 'mongoose';
-
-// Definiere das Schema für die Daten
-const PvYieldPowerSchema = new mongoose.Schema({
-    // Definiere deine Schemafelder hier entsprechend
-});
-
-// Erstelle ein Model basierend auf dem Schema
-const PvYieldPower = mongoose.model('PvYieldPower', PvYieldPowerSchema);
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 export async function fetchData() {
-    // Verbinde mit der MongoDB-Datenbank
-    await mongoose.connect('mongodb://mongoadmin:mySecret1!@10.115.2.66:8017/iot_sensorik_db');
+
+    const uri = 'mongodb://mongoadmin:mySecret1!@10.115.2.66:8017/';
+    const client = new MongoClient(uri);
+
     try {
-        // Finde alle Datensätze in der Collection "pv_yield_power"
-        const data = await PvYieldPower.find();
+        await client.connect();
+
+        const database = client.db('iot_sensorik_db');
+        const collection = database.collection('temperature');
+
+        let data = await collection.find().toArray();
+
+        data = data.map(item => ({
+            _id: item._id.toString(),
+            timestamp: item.timestamp.toISOString(),
+            value: item.value
+        }));
+
 
         return data;
     } catch (e) {
         console.error(e);
     } finally {
-        // Schließe die Verbindung zur Datenbank
-        await mongoose.disconnect();
+        await client.close();
     }
 }
