@@ -1,4 +1,4 @@
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 export async function fetchData() {
 
@@ -11,14 +11,14 @@ export async function fetchData() {
         const database = client.db('iot_sensorik_db');
         const collection = database.collection('temperature');
 
-        let data = await collection.find().toArray();
 
-        data = data.map(item => ({
+        let data: any = await collection.find().toArray();
+
+        data = data.map((item: { _id: { toString: () => any; }; timestamp: { toISOString: () => any; }; value: any; }) => ({
             _id: item._id.toString(),
             timestamp: item.timestamp.toISOString(),
             value: item.value
         }));
-
 
         return data;
     } catch (e) {
