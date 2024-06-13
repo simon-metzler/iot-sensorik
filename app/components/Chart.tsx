@@ -9,7 +9,15 @@ import {
   Tooltip,
 } from "recharts";
 
-export default function Chart({ data }: { data: any[] }) {
+export default function Chart({
+  data,
+  color,
+  line_color,
+}: {
+  data: any[];
+  color: string;
+  line_color: string;
+}) {
   return (
     <div>
       <AreaChart
@@ -20,18 +28,18 @@ export default function Chart({ data }: { data: any[] }) {
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+            <stop offset="5%" stopColor={color} stopOpacity={0.8} />
+            <stop offset="95%" stopColor={color} stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="timestamp" />
-        <YAxis domain={[20, "auto"]} />
+        <XAxis dataKey="timestamp" tickCount={2} />
+        <YAxis domain={["auto", "auto"]} tickCount={3} />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Area
           type="monotone"
           dataKey="value"
-          stroke="#8884d8"
+          stroke={line_color}
           fillOpacity={1}
           fill="url(#colorUv)"
         />

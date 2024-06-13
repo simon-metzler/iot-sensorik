@@ -2,7 +2,7 @@ import { fetchData } from "@/app/lib/data";
 import Chart from "@/app/components/Chart";
 
 export default async function Page() {
-  const data = await fetchData();
+  const data = await fetchData("temperature");
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default async function Page() {
           <a>Woche</a>
         </li>
       </ul>
-      <Chart data={data} />
+      <Chart data={data} color="#00B5B2" line_color="#00A3A0" />
     </div>
   );
 }
