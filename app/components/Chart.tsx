@@ -77,7 +77,7 @@ export default function Chart({
           </linearGradient>
         </defs>
         <XAxis dataKey="timestamp" tickCount={2} />
-        <YAxis domain={["auto", "auto"]} tickCount={3} />
+        <YAxis domain={["dataMin-2", "dataMax+2"]} tickCount={5} />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Area

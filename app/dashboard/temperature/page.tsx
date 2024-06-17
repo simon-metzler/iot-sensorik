@@ -7,7 +7,7 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Temperature Dashboard</h1>
+      <h2 className="text-3xl font-bold ml-4">Temperature Dashboard</h2>
       <Chart data={data} color="#00B5B2" line_color="#00A3A0" />
     </div>
   );

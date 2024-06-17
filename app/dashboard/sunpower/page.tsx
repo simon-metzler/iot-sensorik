@@ -6,7 +6,7 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Sun Power Dashboard</h1>
+      <h2 className="text-3xl font-bold ml-4">Sun Power Dashboard</h2>
       <Chart data={data} color="#F0BB41" line_color="#D1A338" />
     </div>
   );
