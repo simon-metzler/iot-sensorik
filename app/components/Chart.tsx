@@ -8,6 +8,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
+import { useState } from "react";
 
 export default function Chart({
   data,
@@ -18,12 +19,55 @@ export default function Chart({
   color: string;
   line_color: string;
 }) {
+  const [selectedData, setSelectedData] = useState(data);
+
+  function handleHourClick() {
+    // Filter data for the last hour
+    const lastHourData = data.filter((item) => {
+      const currentTime = new Date().getTime();
+      const itemTime = new Date(item.timestamp).getTime();
+      return currentTime - itemTime <= 60 * 60 * 1000;
+    });
+    setSelectedData(lastHourData);
+  }
+
+  function handleHalfDayClick() {
+    // Filter data for the last 12 hours
+    const lastHalfDayData = data.filter((item) => {
+      const currentTime = new Date().getTime();
+      const itemTime = new Date(item.timestamp).getTime();
+      return currentTime - itemTime <= 12 * 60 * 60 * 1000;
+    });
+    setSelectedData(lastHalfDayData);
+  }
+
+  function handleDayClick() {
+    // Filter data for the last 24 hours
+    const lastDayData = data.filter((item) => {
+      const currentTime = new Date().getTime();
+      const itemTime = new Date(item.timestamp).getTime();
+      return currentTime - itemTime <= 24 * 60 * 60 * 1000;
+    });
+    setSelectedData(lastDayData);
+  }
+
   return (
     <div>
+      <ul className="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box m-10">
+        <li>
+          <a onClick={() => handleHourClick()}>Stunde</a>
+        </li>
+        <li>
+          <a onClick={() => handleHalfDayClick()}>Halbtag</a>
+        </li>
+        <li>
+          <a onClick={() => handleDayClick()}>Tag</a>
+        </li>
+      </ul>
       <AreaChart
-        width={830}
+        width={1000}
         height={450}
-        data={data}
+        data={selectedData}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >
         <defs>
