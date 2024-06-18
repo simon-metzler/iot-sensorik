@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useState } from "react";
+import CustomTooltip from "@/app/components/CustomTooltip";
 
 export default function Chart({
   data,
@@ -50,26 +51,6 @@ export default function Chart({
     });
     setSelectedData(lastDayData);
   }
-
-  const CustomTooltip = ({
-    active,
-    payload,
-    label,
-  }: {
-    active: boolean;
-    payload: any[];
-    label: string;
-  }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="custom-tooltip">
-          <p className="label">{`${label} : ${payload[0].value}`}</p>
-        </div>
-      );
-    } else {
-      return null;
-    }
-  };
 
   return (
     <div>

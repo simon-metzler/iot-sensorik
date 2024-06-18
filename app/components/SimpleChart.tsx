@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useState, useId } from "react";
+import CustomTooltip from "@/app/components/CustomTooltip";
 
 export default function SimpleChart({
   data,
@@ -39,7 +40,7 @@ export default function SimpleChart({
         <XAxis dataKey="timestamp" tickCount={2} />
         <YAxis domain={["dataMin-2", "dataMax+2"]} tickCount={5} />
         <CartesianGrid strokeDasharray="3 3" />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} />
         <Area
           type="monotone"
           dataKey="value"
