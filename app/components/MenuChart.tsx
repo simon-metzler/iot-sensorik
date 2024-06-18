@@ -51,6 +51,26 @@ export default function Chart({
     setSelectedData(lastDayData);
   }
 
+  const CustomTooltip = ({
+    active,
+    payload,
+    label,
+  }: {
+    active: boolean;
+    payload: any[];
+    label: string;
+  }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${label} : ${payload[0].value}`}</p>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div>
       <ul className="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box m-10">
@@ -79,7 +99,7 @@ export default function Chart({
         <XAxis dataKey="timestamp" tickCount={2} />
         <YAxis domain={["dataMin-2", "dataMax+2"]} tickCount={5} />
         <CartesianGrid strokeDasharray="3 3" />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} />
         <Area
           type="monotone"
           dataKey="value"
