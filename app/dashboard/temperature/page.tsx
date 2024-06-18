@@ -1,9 +1,8 @@
 import { fetchData } from "@/app/lib/data";
-import Chart from "@/app/components/Chart";
-import { use, useState } from "react";
+import Chart from "@/app/components/MenuChart";
 
 export default async function Page() {
-  const data = await fetchData("temperature", 24 * 60 * 60 * 1000);
+  const data = await fetchData("temperature");
 
   return (
     <div>

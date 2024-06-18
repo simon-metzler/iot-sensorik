@@ -1,8 +1,8 @@
 import { fetchData } from "@/app/lib/data";
-import Chart from "@/app/components/Chart";
+import Chart from "@/app/components/MenuChart";
 
 export default async function Page() {
-  const data = await fetchData("pv_yield_power", 24 * 60 * 60 * 1000);
+  const data = await fetchData("pv_yield_power");
 
   return (
     <div>
