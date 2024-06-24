@@ -162,10 +162,10 @@ export default function Home() {
                 Kunden: Klaus B., Diethard K.
               </td>
               <td className="border border-gray-400 px-4 py-2">
-                 Unzufrieden mit dem Ergebnis
+                Unzufrieden mit dem Ergebnis
               </td>
               <td className="border border-gray-400 px-4 py-2">
-                 Unsicherheiten klären
+                Unsicherheiten klären
               </td>
             </tr>
           </tbody>
